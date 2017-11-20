@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h3 v-for="(fruit,index) in fruitList">{{ fruit }}</h3>
+    ------<br>
+    <h3 v-for="(vaule,key,index) in user">{{ key + ' ' + vaule }}</h3>
+    ------<br>
+    <h3 v-for="n in 3">{{ n }}</h3>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            fruitList: [
+                'apple',
+                'banana'
+            ],
+            user: {
+                name: '小昕',
+                age: 12
+            }
+        },
+        methods: {
+
+        },
+        created: function () {
+            this.user["name"] = 'a'
+
+        }
+    })
+</script>
+</body>
+</html>

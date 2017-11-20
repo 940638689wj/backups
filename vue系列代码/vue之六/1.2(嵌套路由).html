@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <h1>Hello 路由!</h1>
+  <p>
+    <!-- 使用 router-link 组件来导航. -->
+    <!-- 通过传入 `to` 属性指定链接. -->
+    <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+    <router-link :to="{name: 'first'}" replace>打开第一个页面</router-link>
+    <button @click="change">打开第一个页面</button>
+  </p>
+  <!-- 路由出口 -->
+  <!-- 路由匹配到的组件将渲染在这里 -->
+  <router-view></router-view>
+  <router-view></router-view>
+</div>
+
+<template id="tmp">
+  <div>
+    <div>我是头部
+      <router-link to="/first/tmp1">一</router-link>
+      <router-link to="/first/tmp2">二</router-link>
+    </div>
+    
+    <router-view></router-view>
+    <div>我是底部</div>
+  </div>
+</template>
+
+<script type="text/javascript">
+// 1. 定义（路由）组件。
+// 可以从其他文件 import 进来
+var first = {
+  template: '#tmp',
+  data: function () {
+    return {
+    }
+  }
+};
+
+var tmp1 = {
+  template: '<div>嵌套的第一个子页面</div>',
+  data: function () {
+    return {
+    }
+  }
+};
+
+var tmp2 = {
+  template: '<div>嵌套的第二二二二</div>',
+  data: function () {
+    return {
+    }
+  }
+};
+
+
+// 2. 创建 router 实例，然后传 `routes` 配置
+// 你还可以传别的配置参数, 不过先这么简单着吧。
+var router = new VueRouter({
+  routes: [
+    // { 
+    //   path: '/',
+    //   redirect: '/first'
+    // },
+    { 
+      path: '/first',
+      name: 'first',
+      component: first,
+      alias: '/another',
+      children: [
+        {
+          path: 'tmp1', 
+          component: tmp1
+        },
+        {
+          path: 'tmp2', 
+          component: tmp2
+        }
+      ]
+    }
+  ]
+})
+
+// 3. 创建和挂载根实例。
+// 记得要通过 router 配置参数注入路由，
+// 从而让整个应用都有路由功能
+var app = new Vue({
+  el: '#app',
+  router: router,
+  methods:{
+    change: function () {
+      //todo
+      router.replace('/first/123')
+    }
+  }
+})
+
+// 现在，应用已经启动了！
+</script>
+
+</body>
+</html>

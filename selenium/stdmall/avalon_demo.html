@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="https://unpkg.com/avalon2@2.2.8/dist/avalon.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id="text"></div>
+
+	<div :controller="app">
+		{{msg}}
+	</div>
+	<script type="text/javascript">
+		var vmForAvalon = avalon.define({
+			$id: 'app',
+			msg: 'avalon测试'
+		})
+	</script>
+	<hr>
+	<div id="app">
+		{{msg}}
+	</div>
+	<script type="text/javascript">
+		var vmForVue = new Vue({
+			el: '#app',
+			data: {
+				msg: 'vue测试'
+			}
+		})
+	</script>
+</body>
+</html>

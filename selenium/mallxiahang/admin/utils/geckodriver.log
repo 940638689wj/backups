@@ -1,0 +1,40 @@
+1487934230053	geckodriver	INFO	Listening on 127.0.0.1:24177
+1487934232045	mozprofile::profile	INFO	Using profile path C:\Users\ADMINI~1\AppData\Local\Temp\rust_mozprofile.3agDoz34ZptU
+1487934232055	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe
+1487934232091	geckodriver::marionette	INFO	Connecting to Marionette on localhost:24187
+1487934233217	Marionette	INFO	Listening on port 24187
+1487934235510	Marionette	WARN	Using deprecated data structure for setting timeouts
+[Child 12344] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+1487935360355	geckodriver	INFO	Listening on 127.0.0.1:26274
+1487935362370	mozprofile::profile	INFO	Using profile path C:\Users\ADMINI~1\AppData\Local\Temp\rust_mozprofile.ATuXzCIuclCd
+1487935362385	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe
+1487935362407	geckodriver::marionette	INFO	Connecting to Marionette on localhost:26280
+1487935363535	Marionette	INFO	Listening on port 26280
+1487935365612	Marionette	WARN	Using deprecated data structure for setting timeouts
+1487935448439	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1487935462002	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+935378600	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe
+1487935378629	geckodriver::marionette	INFO	Connecting to Marionette on localhost:26315
+1487935379640	Marionette	INFO	Listening on port 26315
+1487935382089	Marionette	WARN	Using deprecated data structure for setting timeouts
+1488878851818	geckodriver	INFO	Listening on 127.0.0.1:13442
+1488878853811	mozprofile::profile	INFO	Using profile path C:\Users\ADMINI~1\AppData\Local\Temp\rust_mozprofile.KnTOPoaApR5J
+1488878853815	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe
+1488878853838	geckodriver::marionette	INFO	Connecting to Marionette on localhost:13463
+1488878855094	Marionette	INFO	Listening on port 13463
+1488878857524	Marionette	WARN	Using deprecated data structure for setting timeouts
+JavaScript error: resource://gre/components/SanityTest.js, line 65: NS_ERROR_FILE_ACCESS_DENIED: Component returned failure code: 0x80520015 (NS_ERROR_FILE_ACCESS_DENIED) [nsIPrefService.savePrefFile]
+*************************
+A coding exception was thrown and uncaught in a Task.
+
+Full message: TypeError: NetworkError when attempting to fetch resource.
+Full stack: 
+*************************
+1488885320791	geckodriver	INFO	Listening on 127.0.0.1:22516
+1488885322815	mozprofile::profile	INFO	Using profile path C:\Users\ADMINI~1\AppData\Local\Temp\rust_mozprofile.B3cpecKm2woR
+1488885322825	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe
+1488885322882	geckodriver::marionette	INFO	Connecting to Marionette on localhost:22523
+1488885324402	Marionette	INFO	Listening on port 22523
+1488885326448	Marionette	WARN	Using deprecated data structure for setting timeouts
+[Child 2800] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 2800] WARNING: pipe error: 109: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <simple-counter @more="warning"></simple-counter>
+</div>
+<script>
+    Vue.component('simple-counter', {
+        template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+        data: function () {
+            return {
+                counter: 0
+            }
+        },
+        watch: {
+            counter: function (val) {
+                if(val > 3) {
+                    this.$emit('more',this.counter,this.counter+1)
+                }
+            }
+        }
+    })
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            
+        },
+        methods: {
+            warning: function (val, val2) {
+                alert(val)
+                alert(val2)
+            }
+        },
+        created: function () {
+
+        }
+    })
+    
+</script>
+</body>
+</html>

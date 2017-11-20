@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js">
+</script>
+</head>
+<body>
+	<div id="tab">
+		<span class="nav" targetsrc="content1.html">导航一</span>
+		<span class="nav" targetsrc="content2.html">导航二</span>
+		<span class="nav">导航三</span>
+		<span class="nav">导航四</span>
+	</div>
+	<div id="menu">
+	</div>
+	<div id="content">
+		<iframe src=""></iframe>
+	</div>
+	<style type="text/css">
+		#tab{
+			background-color: #aa0000;
+			height: 100px;
+		}
+		#tab .nav{
+			font-size: 30px;
+		}
+		#menu{
+			background-color: #888888;
+			height: 500px;
+			width: 100px;
+			float: left;
+		}
+		#content{
+			float: left;
+		}
+	</style>
+	<script type="text/javascript">
+		setTimeout('$("#menu").html("<div id=\'menu_content\'>菜单内容menu</div>")', 2000)
+
+		$('.nav').click(function () {
+			$('#content iframe').attr('src', $(this).attr('targetsrc'))
+		})
+	</script>
+</body>
+</html>

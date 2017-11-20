@@ -1,0 +1,63 @@
+</html>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue基础语法示例</title>
+
+</head>
+<body>
+
+<ul id='list'>
+  <li class='item'>Item 1</li>
+  <li class='item'>Item 2</li>
+  <li class='item'>Item 3</li>
+</ul>
+
+<script>
+var sortKey = "new" // 排序的字段，新增（new）、取消（cancel）、净关注（gain）、累积（cumulate）人数
+var sortType = 1 // 升序还是逆序
+var data = [{...}, {...}, {..}, ..] // 表格数据
+// document.getElementById('table').appendChild()
+
+var str = ''//html字符串
+//遍历表格数据 生成对应html字符串
+for (index in data){
+	str += '<tr><td>'+data[index].prop+'</td></tr>'
+}
+document.getElementById('table').innerHTML(str)...... //进行dom更新
+
+var element = {
+  tagName: 'ul', // 节点标签名
+  props: { // DOM的属性，用一个对象存储键值对
+    id: 'list'
+  },
+  children: [ // 该节点的子节点
+    {tagName: 'li', props: {class: 'item'}, children: ["Item 1"]},
+    {tagName: 'li', props: {class: 'item'}, children: ["Item 2"]},
+    {tagName: 'li', props: {class: 'item'}, children: ["Item 3"]},
+  ]
+}
+
+this.$http.get('/orderHeader/cancelOrderHeader', 
+	{
+		{
+			//参数
+			key: value
+		},
+		//请求相关配置
+		emulateJSON: true
+	}).then(
+		//成功回调函数
+		function (res) {
+		},
+		//失败回调函数
+		function (res) {
+		}
+)
+
+
+</script>
+</body>
+</html>

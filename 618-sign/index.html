@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+  <meta charset="utf-8">
+  <meta name="renderer" content="always">
+  <meta name="viewport" content="user-scalable=0">
+  <meta name="format-detection" content="telephone=no" />
+  <title>拼团</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <link rel="stylesheet" href="static/iconfont/iconfont.css">
+  <!-- <script src="http://cdn.ronghub.com/RongIMLib-2.2.4.min.js"></script> -->
+</head>
+<body>
+<!--   <h1 id="senw"></h1> -->
+  <div id="app"></div>
+  <script>
+    /**
+     * 设置rem
+     * @return {[type]} [description]
+     */
+    function resizeRem () {
+      let screenWidth = window.innerWidth;
+      document.documentElement.style.fontSize = ((screenWidth / 2) / 18.75) + "px"
+    }
+    resizeRem()
+    window.onresize = function(){
+      resizeRem()
+    }
+  </script>
+  <div style="display: none;">
+    <script src="https://s13.cnzz.com/z_stat.php?id=1262000003&web_id=1262000003" language="JavaScript"></script>
+  </div>
+
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script>
+  /**
+   * 加载微信配置
+   * @param  {[type]}  data  [description]
+   * @param  {Boolean} debug [description]
+   * @return {[type]}        [description]
+   */
+  function readyWeChatJs (data, debug = false) {
+    console.log(data, 'ready we chat')
+    wx.config({
+      debug: false,
+      appId: data.appId,
+      timestamp: data.timestamp,
+      nonceStr: data.nonceStr,
+      signature: data.signature,
+      jsApiList: [
+          'onMenuShareTimeline',
+          'onMenuShareAppMessage',
+          'onMenuShareQQ',
+          'onMenuShareWeibo',
+          'onMenuShareQZone'
+      ]
+    });
+  }
+  /**
+   * 注册分享到朋友圈信息
+   * @param  {[type]} data [description]
+   * @return {[type]}      [description]
+   */
+  function onMenuShareTimeline (data) {
+    wx.onMenuShareTimeline({
+      title: data.title,
+      link: data.link,
+      desc: data.desc,
+      imgUrl: data.imgUrl,
+      success: function (res) {
+        data.success(res)
+      },
+      cancel: function (res) {
+        data.cancel(res)
+      }
+    });
+  }
+  /**
+   * 分享给好友
+   */
+  function onMenuShareAppMessage (data) {
+    // 分享微信好友
+    wx.onMenuShareAppMessage({
+      title: data.title,
+      desc: data.desc,
+      link: data.link,
+      imgUrl: data.imgUrl,
+      success: function (res) {
+        data.success(res)
+      },
+      cancel: function (res) {
+        data.cancel(res)
+      }
+    });
+    // 分享qq
+    wx.onMenuShareQQ({
+      title: data.title,
+      desc: data.desc,
+      link: data.link,
+      imgUrl: data.imgUrl,
+      success: function () { 
+         data.success(res)
+      },
+      cancel: function () { 
+         data.cancel(res)
+      }
+    });
+    // 分享微博
+    wx.onMenuShareWeibo({
+      title: data.title,
+      desc: data.desc,
+      link: data.link,
+      imgUrl: data.imgUrl,
+      success: function () { 
+         data.success(res)
+      },
+      cancel: function () { 
+         data.cancel(res)
+      }
+    });
+    // 分享qq空间
+    wx.onMenuShareQZone({
+      title: data.title,
+      desc: data.desc,
+      link: data.link,
+      imgUrl: data.imgUrl,
+      success: function () { 
+         data.success(res)
+      },
+      cancel: function () { 
+         data.cancel(res)
+      }
+    });
+  }
+
+  wx.ready(function () {
+      onMenuShareTimeline({
+        title: '【多！好！省！】高端大气上档次的深海大鱼限时抢！',
+        desc: '30元海鲈鱼！140元法国银鳕鱼！120元阿根廷红虾！通通包邮！高档海产品放血大卖，邀好友一起来拼团！',
+        link: 'http://www.lanhaitianwang.com/weiphp/JSSDK_LIB/pintuan',
+        imgUrl: window.location.origin + window.location.pathname + 'static/img/wechat-share.png',
+        success: function (res) {
+          console.log('已分享');
+        },
+        cancel: function (res) {
+          console.log('已取消');
+        }
+      })
+      onMenuShareAppMessage({
+          title: '【多！好！省！】高端大气上档次的深海大鱼限时抢！',
+          desc: '30元海鲈鱼！140元法国银鳕鱼！120元阿根廷红虾！通通包邮！高档海产品放血大卖，邀好友一起来拼团！',
+          link: 'http://www.lanhaitianwang.com/weiphp/JSSDK_LIB/pintuan',
+          imgUrl: window.location.origin + window.location.pathname + 'static/img/wechat-share.png',
+          success: function (res) {
+            console.log('已分享');
+          },
+          cancel: function (res) {
+            console.log('已取消');
+          }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+输入框1：<input id="inp1"><br/>
+输入框2：<input id="inp2">
+
+<script>
+    $.get("1_url", {param: 1}, function (data) {
+        $("#inp1").val(data);
+    }, "json");
+
+    $.get("2_url", {param: 1}, function (data) {
+        $("#inp1").val(data);
+    }, "json");
+
+    $.get("3_url", {param: 1}, function (data) {
+        $("#inp2").val(data);
+    }, "json");
+</script>
+<style>
+    body,input{
+        font-size:20px;
+    }
+</style>
+</body>
+</html>

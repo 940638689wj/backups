@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- <input v-model="num"> -->
+    <my-component @numtoobig="warning"></my-component>
+</div>
+
+<template id="numtest">
+    <button @click="num++">{{num}}</button>
+    <button></button>
+</template>
+<script>
+    var cmp = {
+        template: '#numtest',
+        },
+        data: function() {
+            return {
+                num: 0
+            }
+        },
+        methods:{
+
+        },
+        created:function (argument) {
+            $.post()
+        }
+    }
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            num: 0
+        },
+        components : {
+            'my-component': cmp
+        },
+        methods: {
+            warning: function (val,val2,val3) {
+                alert('当前数字'+val+val2+val3)
+                alert('超过5了！！')
+            }
+        },
+        created: function () {
+
+        }
+    })
+    
+</script>
+</body>
+</html>

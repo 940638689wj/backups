@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue基础语法示例</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.resource/1.2.1/vue-resource.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 表单 -->
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-11">
+                <h3><b>&nbsp;&nbsp;表单</b></h3>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="username" class="col-sm-1 control-label">姓名</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="" name="username" id="username" v-model="form.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="age" class="col-sm-1 control-label">年龄</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="" name="age" id="age" v-model="form.age">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-11">
+                <button class="btn btn-primary" type="button" 
+                @click="confirm">确认</button>
+                <button class="btn btn-danger" type="button" @click="reset">重置</button>
+            </div>
+        </div>
+    </form>
+    <br/>
+    <br/>
+
+
+    <!-- 表格 -->
+    <div class="col-sm-6 col-sm-offset-1">
+        <h3><b id="tableName">&nbsp;&nbsp;表格</b></h3>
+    </div>
+
+    <div class="col-sm-6 col-sm-offset-1" v-show="trList.length > 0 ">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(trInfo,index) in trList">
+                    <td>{{index}}</td>
+                    <td v-html="trInfo.name"></td>
+                    <td>{{trInfo.age}}</td>
+                    <td><a href="javascript:void(0)" data-toggle="modal" data-target=".delModal" @click="del(index)">删除</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-danger" data-toggle="modal" data-target=".delModal" @click="delIndex = -1">全部删除</button>
+    </div>
+
+    <!-- 表格无数据 -->
+    <div class="col-sm-6 col-sm-offset-1" style="background-color: #eeeeee"  v-show="trList.length == 0 ">
+        <br>
+        <h4 class="text-center"><b>暂无数据！</b></h4>
+        <br>
+    </div>
+
+    <!-- 删除弹窗 -->
+    <div class="delModal modal fade" tabindex="-1" role="dialog" aria-labelledby="delModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="delModalLabel">删除</h4>
+                </div>
+                <div class="modal-body">
+                    确认删除？
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button class="btn btn-primary" data-dismiss="modal" @click="confirmDel">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+var vm = new Vue({
+    el : "#app",
+    data : {
+        //表单
+        form: {
+            name: '11',
+            age : '22'
+        },
+        trList : [],
+        delIndex : -2
+    },
+    methods:{
+        //确认
+        confirm: function() {
+            this.$http.post("/orderHeader/addTr",this.form,{emulateJSON:true}).then(
+                    function (res) {
+                        console.log(res)
+                        this.reloadTr();
+            })
+//             this.trList.push({
+//                 name: this.form.name,
+//                 age : this.form.age
+//             });
+        },
+        reset : function() {
+            this.form.name= '';
+            this.form.age= '';
+        },
+        del: function (index) {
+            this.delIndex = index;
+        },
+        confirmDel : function() {
+            if(this.delIndex >=0){
+                this.trList.splice(this.delIndex,1);
+            } else if(this.delIndex == -1){
+                this.$http.post("/orderHeader/delTrList",{}).then(
+                        function (res) {
+                            console.log(res)
+                            this.reloadTr();
+                        })
+            }
+        },
+        reloadTr:function () {
+            this.$http.get("/orderHeader/getTrList").then(function (res) {
+                this.trList = res.body;
+            })
+        }
+    },
+    created: function () {
+        this.reloadTr();
+    },
+})
+
+
+</script>
+</body>
+</html>

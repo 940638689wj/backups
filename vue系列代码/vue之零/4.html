@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+<!--View 视图，负责展示数据-->
+输入框1：<input id="inp1"> <br/>
+输入框2：<input id="inp2">
+
+<script>
+    //Model 模型，负责存储数据
+    var obj = {};
+
+    // Controller 控制器，负责将更新后的数据重新渲染至视图上
+    Object.defineProperties(obj,{
+        data1 :{
+            set:function (value) {
+                $("#inp1").val(value)
+            }
+        },
+        data2 :{
+            set:function (value) {
+                $("#inp2").val(value)
+            }
+        }
+    });
+
+    //更新Model
+    $.get("1_url", {param: 1}, function (data) {
+        obj.data1 = data;
+    }, "json");
+
+    $.get("2_url", {param: 1}, function (data) {
+        obj.data1 = data;
+    }, "json");
+
+    $.get("3_url", {param: 1}, function (data) {
+        obj.data2 = data;
+    }, "json");
+
+//    obj.data1 = "小明";
+//    obj.data2 = "黑色";
+//    setInterval()
+
+</script>
+<style>
+    body,input{
+        font-size:20px;
+    }
+</style>
+</body>
+</html>

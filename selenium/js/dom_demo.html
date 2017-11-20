@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="content" class="cont" onclick="showMsg()">内容</div>
+<div class="cont">内容</div>
+<div class="cont">内容</div>
+<div class="cont">内容</div>
+<input type="" name="" id="addNum">
+<button onclick="add()" id="addBtn">+</button>
+<input type="text" id="input" value="0">
+	<script type="text/javascript">
+		document.getElementById('content').innerHTML = "新的";
+
+		var list = document.getElementsByClassName('cont');
+		for (var i = 0; i< list.length; i++) {
+			list[i].innerHTML = "小";
+		}
+
+		// document.getElementById('input').value = '';
+
+		function showMsg() {
+			var num = 5 ;
+			num += 5;
+			num /=3;
+			alert(num);
+		}
+
+		// 只能点一次
+		var flag = true;
+		function add() {
+			if (flag) {
+				var addNum = document.getElementById('addNum').value;
+				var addNum = parseInt(addNum);
+				var secondNum = document.getElementById('input').value;
+				var secondNum = parseInt(secondNum);
+				document.getElementById('input').value = addNum + secondNum;
+
+				flag = false;
+			}
+		}
+
+
+		/*
+		练习：
+		1.让该按钮 在点击5次后 或者 总和超过1000 按钮失效
+		2.增加一个乘法按钮 实现上述相同功能（用一个函数实现）
+		*/
+	</script>
+</body>
+</html>

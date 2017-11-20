@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <h1>Hello 路由!</h1>
+  <p>
+    <!-- 使用 router-link 组件来导航. -->
+    <!-- 通过传入 `to` 属性指定链接. -->
+    <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+    <router-link to="/first/aaaaaa">打开第一个页面</router-link>&nbsp;&nbsp;
+    <router-link to="/second">打开第二个页面</router-link>
+  </p>
+  <!-- 路由出口 -->
+  <!-- 路由匹配到的组件将渲染在这里 -->
+  <router-view></router-view>
+</div>
+
+<script type="text/javascript">
+// 1. 定义（路由）组件。
+// 可以从其他文件 import 进来
+var first = {
+  template: '<div>我是第一个页面~{{msg}}</div>',
+  data: function () {
+    return {
+      msg: this.$route.params.msg
+    }
+  }
+};
+
+var second = { 
+  template: '<div>我是第二个页面~~~~~~~~~</div>' 
+};
+
+// 2. 创建 router 实例，然后传 `routes` 配置
+// 你还可以传别的配置参数, 不过先这么简单着吧。
+var router = new VueRouter({
+  routes: [
+    { path: '/first/:msg', component: first },
+    { path: '/second', component: second }
+  ]
+})
+
+// 3. 创建和挂载根实例。
+// 记得要通过 router 配置参数注入路由，
+// 从而让整个应用都有路由功能
+var app = new Vue({
+  el: '#app',
+  router: router
+})
+
+// 现在，应用已经启动了！
+</script>
+
+</body>
+</html>

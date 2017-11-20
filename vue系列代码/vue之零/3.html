@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+<script>
+    var obj;
+    //传统操作js对象
+//    obj = {};
+//    obj.num = 1;
+
+    //es5操作js对象
+    obj = Object.create(null);
+    Object.defineProperty(obj,"num",{
+        configurable : true,
+        enumerable : true,
+//        writable : true,
+//        value : 1,
+        set :function (val) {
+            console.log('set--'+val)
+        },
+        get :function () {
+            console.log('get--')
+        }
+    });
+
+    for (en in obj){
+        alert(en)
+    }
+//    obj.num = 1;
+//    var num = obj.num;
+
+</script>
+</body>
+</html>

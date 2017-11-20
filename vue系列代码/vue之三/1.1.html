@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>结果：{{firstNum + secondNum}}</h1>
+    <h1>结果：<span v-text="firstNum + secondNum"></span></h1>
+    <h1>结果：{{firstNum + secondNum > 5 ? 'yes' : 'no'}}</h1>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            firstNum: 3,
+            secondNum: 4
+        },
+        methods: {
+
+        },
+        created: function () {
+
+        }
+    })
+</script>
+</body>
+</html>

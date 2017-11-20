@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="https://unpkg.com/avalon2@2.2.8/dist/avalon.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id="app">
+		{{msg}}
+		<div v-for="(name,index) in list" :id="msg" :name="msg">{{name + index}}</div>
+		<div @click="showMsg">{{compNum}}</div>
+	</div>
+	<script type="text/javascript">
+		var vm1 = new Vue({
+			el: '#app',
+			data: {
+				msg: 'namelist',
+				list: ['小明','小白','小黄', 'aaa'],
+				num1: 4,
+				num2: 6
+			},
+			computed: {
+				compNum () {
+					return this.num1 * this.num1 / (this.num2 + 5)
+				}
+			},
+			watch: {
+				num1 (val, oldVal) {
+					// console.log(val)
+					// console.log(oldVal)
+				}
+			},
+			methods: {
+				showMsg () {
+					alert(this.msg)
+				}
+			},
+			created () {
+				// setInterval('vm1.num1++',1000)
+			}
+		})
+	</script>
+	<hr>
+	<div :controller="app">
+		{{msg}}
+		<div :for="($index,name) in list" :attr="{id: msg, name: msg}">{{name + $index}}</div>
+		<div :click="methods.showMsg">{{compNum}}</div>
+	</div>
+	<script type="text/javascript">
+		var vm = avalon.define({
+			$id: 'app',
+			msg: 'avalon_test',
+			list: ['小明','小白','小黄', 'aaa'],
+			num1: 4,
+			num2: 6,
+			methods: {
+				showMsg () {
+					alert(vm.msg)
+				}
+			},
+			$computed: {
+				compNum () {
+					return this.num1 * this.num1 / (this.num2 + 5)
+				}
+			}
+		})
+
+		vm.$watch('onReady', function () {
+			setInterval('vm.num1++',1000)
+		})
+
+		vm.$watch('num1', function (val, oldVal) {
+			console.log(val)
+			console.log(oldVal)
+		})
+	</script>
+</body>
+</html>

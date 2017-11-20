@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input v-bind:name="nameTest">
+    <img :src="srcTest">
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            nameTest: 'na',
+            srcTest: 'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=2750f782d809b3def4bfe268fcbe6cd3/5366d0160924ab18e635b1dd3cfae6cd7b890b3c.jpg'
+        },
+        methods: {
+
+        },
+        created: function () {
+
+        }
+    })
+</script>
+<style>
+    input{
+        font-size:20px;
+    }
+</style>
+</body>
+</html>

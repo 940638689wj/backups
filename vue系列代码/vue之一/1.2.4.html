@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1 v-if="false">标题1：{{msg}}</h1>
+    <h2 v-show="!isShow">标题2：{{msg}}</h2>
+    <h2 v-show="isShow">标题3：{{msg}}</h2>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            isShow: true,
+            msg: "hello vue"
+        },
+        methods: {
+
+        },
+        created: function () {
+
+        }
+    })
+</script>
+<style>
+    input{
+        font-size:20px;
+    }
+</style>
+</body>
+</html>

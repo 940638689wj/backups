@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <template v-if="result">
+      <label>用户名</label>
+      <input placeholder="输入用户名" key="userName">
+    </template>
+
+    <template v-else>
+      <label>邮箱</label>
+      <input placeholder="输入邮箱" key="email">
+    </template>
+    
+    <br><button type="button" @click='result = !result'>切换</button>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            result: true
+        },
+        methods: {
+        },
+        created: function () {
+        }
+    })
+</script>
+</body>
+</html>

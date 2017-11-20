@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1 v-if="result">这里是真</h1>
+    <h1 v-else>这里是假</h1>
+</div>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            result: true
+        },
+        methods: {
+        },
+        created: function () {
+        }
+    })
+</script>
+</body>
+</html>

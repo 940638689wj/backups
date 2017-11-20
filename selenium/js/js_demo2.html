@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>标题</h1>
+	<button>按钮</button>
+	<script type="text/javascript">
+		// 数组
+		var name1 = '小白';
+		var name2 = '小黑';
+		var name3 = '小红';
+
+		// i = i + 5;
+		// i += 5;
+		// console.log(name1);
+
+		var nameList = ['小白','小黑','小红', 1 ,false];
+
+		for (var i =  0; i < nameList.length; i++) {
+			// console.log(nameList[i])
+		}
+
+		var list = [10, 20 , [30, 40], 60, nameList,
+		{score: 70, scoreList: [21,64]}];
+		console.log(list);
+		console.log(list.length);
+		console.log(list[2][1]);
+		console.log(list[4].score);
+		console.log(list[4].scoreList[1]);
+
+		// 键值对 json
+		var person_name = '小白';
+		var person_age = 12;
+		var person_axe = '男';
+		// console.log(person_name);
+
+		var person = { // key-value 
+			name: '小白', 
+			age: 12,
+			axe: '男',
+			scoreList: [45,12]
+		}
+		// console.log(person);
+		// console.log(person.name);
+		// console.log(person.age);
+		// console.log(person.axe);
+		console.log(person.scoreList[0]);
+
+	</script>
+</body>
+</html>

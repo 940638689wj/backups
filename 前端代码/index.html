@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>code_template_vue</title>
+    <script src="./static/js/jquery-1.12.0.min.js"></script>
+		<script src="./static/js/auto-line-number.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+    var stopId = setInterval(textareaCount, 500)
+    function textareaCount () {
+      if (!$('#nginx').is(':hidden')) {
+        clearInterval(stopId)
+        $('#nginx textarea').setTextareaCount({
+          width: '30px',
+          bgColor: '#EEE',
+          color: '#000',
+          display: 'inline-block'
+        })
+      }
+    }
+    </script>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

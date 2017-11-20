@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <a href="javascript:skip1()">展示页面一</a>
+    <a href="javascript:skip2()">展示页面二</a>
+    <div id="content"></div>
+
+    <script type="text/javascript">
+    window.onhashchange = function () {
+        if(window.location.hash == '#app1') {
+            skip1();
+        }
+
+        if(window.location.hash == '#app2') {
+            skip2();
+        }
+    }
+
+        function skip1() {
+            $("#content").html("这里是页面一的内容");
+            window.location.href="#app1";
+        }
+
+        function skip2() {
+            $("#content").html("这里是页面二二二二二二二二二二二二二二二");
+            window.location.href="#app2";
+        }
+    </script>
+
+
+    <style type="text/css">
+        #app2{
+            height: 800px;
+            background-color: #555555;
+            color: white;
+        }
+        #app1{
+            height: 800px;
+            background-color: #aaaaaa;
+        }
+        body{
+            font-size: 30px;
+        }
+    </style>
+</body>
+</html>

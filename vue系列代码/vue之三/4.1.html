@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style type="text/css">
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app" v-cloak>
+<div @click="al(1)">
+    <div @click.stop="al(2)">1111111111</div>
+</div>
+
+    <button type="button" @click.once="al">只触发一次</button>
+    <input @keyup.enter="al">回车触发</input>
+
+
+    
+
+<div :class="newClassList" :style="{display: isDisplay}">名称： {{ name }}</div>
+
+</div>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+           name: '小白',
+           isShow : true,
+           isDisplay: 'none'
+        },
+        computed: {
+            classList : function () {
+                return { aa :this.isShow}
+            },
+            newClassList: function() {
+                var v = this.classList
+                v.bb = true
+                return v
+            },
+        },
+        methods: {
+            al:function(val){
+                alert(val)
+            }
+        },
+        created: function () {
+            // this.classList.push('cc')
+            setTimeout('vm.isShow = false',3000)
+        }
+    })
+</script>
+</body>
+</html>

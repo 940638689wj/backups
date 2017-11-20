@@ -1,0 +1,26 @@
+1、强制等待：
+time.sleep(1)
+参数为时间，单位为秒，不推荐
+
+2、隐式等待：
+browser.implicitly_wait(10)
+
+3、显式等待
+导入包：
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+写法：
+WebDriverWait(browser,5).until(EC.presence_of_element_located((By.CSS_SELECTOR,'#grid button')))
+自定义等待条件：
+（1）页面元素是否在页面上可用和可被单击：elementToBeClickable(By locator)
+
+（2）页面元素是否处于被选中状态：elementToBeSelected(WebElement element)
+
+（3）页面元素是否在页面中存在：presenceOfElementLocated(By locator)
+
+（4）在页面元素中是否包含特定的文本：textToBePresentInElement(By locator)
+
+（5）页面元素的value是否为指定字符串：textToBePresentInElementValue(By locator, java.lang.String text)
+
+（6）标题是否为指定字符串：titleContains(java.lang.String title)
